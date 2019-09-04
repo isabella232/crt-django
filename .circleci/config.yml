@@ -40,6 +40,10 @@ jobs:
             pip install pipenv
             pipenv install
             pipenv run crt_portal/manage.py migrate
+      - run:
+          name: Install pa11y CI
+          command: |
+            sudo npm install -g pa11y-ci --unsafe-perm=true --allow-root
       - save_cache: # cache Python and Node dependencies using checksum of Pipfile and package.json as the cache-key
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}-{{ checksum "package.json" }}
           paths:
