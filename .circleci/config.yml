@@ -62,6 +62,9 @@ jobs:
           name: Run bandit (Python security) tests
           command: |
             pipenv run bandit -r crt_portal/
+      - run:
+          name: Run pa11y-ci
+          command: pa11y-ci http://0.0.0.0:8000/report
 # # we are not ready for this
 #       - run:
 #           name:
