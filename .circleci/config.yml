@@ -40,6 +40,9 @@ jobs:
             pip install pipenv
             pipenv install
             pipenv run crt_portal/manage.py migrate
+      - run:
+          name: Install pa11y CI
+          command: npm install -g pa11y-ci
       - save_cache: # cache Python and Node dependencies using checksum of Pipfile and package.json as the cache-key
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}-{{ checksum "package.json" }}
           paths:
@@ -57,7 +60,7 @@ jobs:
       - run:
           name: Run pa11y
           command: |
-            pa11y http://0.0.0.0:8000/report/
+            pa11y-ci http://0.0.0.0:8000/report/
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: /tmp/test-results
 
