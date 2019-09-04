@@ -54,6 +54,10 @@ jobs:
           name: Run unit tests
           command: |
             pipenv run crt_portal/manage.py test cts_forms
+      - run:
+          name: Run pa11y
+          command: |
+            pa11y http://0.0.0.0:8000/report/
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: /tmp/test-results
 
