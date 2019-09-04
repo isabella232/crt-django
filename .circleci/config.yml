@@ -42,7 +42,9 @@ jobs:
             pipenv run crt_portal/manage.py migrate
       - run:
           name: Install pa11y CI
-          command: npm install -g pa11y-ci
+          command: |
+            npm install --save puppeteer@next
+            npm install -g pa11y-ci
       - save_cache: # cache Python and Node dependencies using checksum of Pipfile and package.json as the cache-key
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}-{{ checksum "package.json" }}
           paths:
