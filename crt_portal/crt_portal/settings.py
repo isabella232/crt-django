@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Note that when using Docker, ENV is set to "LOCAL" by docker-compose.yml.
 # We are using Docker for local development only.
 environment = os.environ.get('ENV', 'PROD')
-test_env = os.environ.get('TEST_ENV', False)
+circle = os.environ.get('CIRCLE', False)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -65,11 +65,9 @@ ALLOWED_HOSTS = [
     'crt-portal-django-prod.app.cloud.gov',
     'crt-portal-django-stage.app.cloud.gov',
     'crt-portal-django-dev.app.cloud.gov',
-    # Dont merge
-    '127.0.0.1',
 ]
 
-if test_env == 'circle':
+if circle is True:
     ALLOWED_HOSTS.append('127.0.0.1')
     logger.warning('CIRCLE test host added')
 
