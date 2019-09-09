@@ -68,7 +68,7 @@ ALLOWED_HOSTS = [
 ]
 
 if circle is True:
-    ALLOWED_HOSTS.append('127.0.0.1')
+    ALLOWED_HOSTS = ['127.0.0.1', ]
     logger.warning('CIRCLE test host added')
 
 # Application definition
