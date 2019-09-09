@@ -5,8 +5,6 @@ jobs:
   build_and_test: # runs not using Workflows must have a `build` job as entry point
     # directory where steps are run
     working_directory: ~/code
-    environment:
-      CIRCLECI: True
     docker:
       # CircleCI Python images available at: https://hub.docker.com/r/circleci/python/
       - image: circleci/python:3.7-node-browsers
@@ -14,7 +12,6 @@ jobs:
           PIPENV_VENV_IN_PROJECT: True
           DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
           NODE_ENV: development # Only needed if puppeteer is in `devDependencies`
-          CIRCLECI: True
       # CircleCI PostgreSQL images available at: https://hub.docker.com/r/circleci/postgres/
       - image: postgres:10.1-alpine
         environment:
@@ -32,7 +29,6 @@ jobs:
       - run:
           name: Python install with pipenv then migrate the database
           command: |
-            export CIRCLECI=True
             pip install -U pip && pip install pipenv && \
             pip install pipenv
             pipenv install
@@ -46,7 +42,6 @@ jobs:
       - run:
           name: run server for tests
           command: |
-            export CIRCLECI=True
             pipenv run crt_portal/manage.py runserver 8000
           background: True
       - run:
@@ -69,7 +64,6 @@ jobs:
       - run:
           name: Run pa11y-ci accessibility check
           command: |
-            export CIRCLECI=True
             curl --retry-delay 5 --retry 10  --retry-connrefused http://127.0.0.1:8000
             npm run test:a11y-ci
 
