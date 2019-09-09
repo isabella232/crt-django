@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Note that when using Docker, ENV is set to "LOCAL" by docker-compose.yml.
 # We are using Docker for local development only.
 environment = os.environ.get('ENV', 'PROD')
-circle = os.environ.get('CIRCLE', False)
+circle = os.environ.get('CIRCLECI', False)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/

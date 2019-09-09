@@ -4,8 +4,6 @@ version: 2
 jobs:
   build_and_test: # runs not using Workflows must have a `build` job as entry point
     # directory where steps are run
-    environment:
-      CIRCLE: True
     working_directory: ~/code
     docker:
       # CircleCI Python images available at: https://hub.docker.com/r/circleci/python/
@@ -19,7 +17,6 @@ jobs:
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: circle_test
-          CIRCLE: True
     steps:
       - checkout
       - restore_cache:
