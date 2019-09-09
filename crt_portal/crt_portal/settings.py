@@ -65,6 +65,8 @@ ALLOWED_HOSTS = [
     'crt-portal-django-prod.app.cloud.gov',
     'crt-portal-django-stage.app.cloud.gov',
     'crt-portal-django-dev.app.cloud.gov',
+    # Dont merge
+    '127.0.0.1',
 ]
 
 if test_env == 'circle':
