@@ -14,7 +14,9 @@ import os
 import json
 import logging
 
+
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -67,7 +69,7 @@ ALLOWED_HOSTS = [
 
 if circle is True:
     ALLOWED_HOSTS.append('127.0.0.1')
-    logger.info('CIRCLE test host added')
+    logger.warning('CIRCLE test host added')
 
 # Application definition
 
@@ -200,4 +202,5 @@ COMPRESS_PRECOMPILERS = (
 COMPRESS_OFFLINE = True
 
 if environment == 'LOCAL':
+    logger.warning('Importing local settings.')
     from .local_settings import *  # noqa: F401,F403
