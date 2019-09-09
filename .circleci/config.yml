@@ -9,7 +9,7 @@ jobs:
       # CircleCI Python images available at: https://hub.docker.com/r/circleci/python/
       - image: circleci/python:3.7-node-browsers
         environment: # environment variables for primary container
-          PIPENV_VENV_IN_PROJECT: true
+          PIPENV_VENV_IN_PROJECT: True
           DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
           NODE_ENV: development # Only needed if puppeteer is in `devDependencies`
       # CircleCI PostgreSQL images available at: https://hub.docker.com/r/circleci/postgres/
@@ -17,7 +17,7 @@ jobs:
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: circle_test
-          CIRCLE: true
+          CIRCLE: True
     steps:
       - checkout
       - restore_cache:
@@ -44,7 +44,7 @@ jobs:
           name: run server for tests
           command: |
             pipenv run crt_portal/manage.py runserver 8000
-          background: true
+          background: True
       - run:
           name: Make directory for test results
           command: |
@@ -77,7 +77,7 @@ jobs:
       # CircleCI Python images available at: https://hub.docker.com/r/circleci/python/
       - image: circleci/python:3.7-node-browsers
         environment: # environment variables for primary container
-          PIPENV_VENV_IN_PROJECT: true
+          PIPENV_VENV_IN_PROJECT: True
           DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
       # CircleCI PostgreSQL images available at: https://hub.docker.com/r/circleci/postgres/
       - image: postgres:10.1-alpine
@@ -118,7 +118,7 @@ jobs:
       # CircleCI Python images available at: https://hub.docker.com/r/circleci/python/
       - image: circleci/python:3.7-node-browsers
         environment: # environment variables for primary container
-          PIPENV_VENV_IN_PROJECT: true
+          PIPENV_VENV_IN_PROJECT: True
           DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
       # CircleCI PostgreSQL images available at: https://hub.docker.com/r/circleci/postgres/
       - image: postgres:10.1-alpine
@@ -159,7 +159,7 @@ jobs:
       # CircleCI Python images available at: https://hub.docker.com/r/circleci/python/
       - image: circleci/python:3.7-node-browsers
         environment: # environment variables for primary container
-          PIPENV_VENV_IN_PROJECT: true
+          PIPENV_VENV_IN_PROJECT: True
           DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
       # CircleCI PostgreSQL images available at: https://hub.docker.com/r/circleci/postgres/
       - image: postgres:10.1-alpine
