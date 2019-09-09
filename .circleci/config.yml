@@ -88,7 +88,7 @@ jobs:
       - checkout
       - restore_cache:
           # this should all be cached from the test
-          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}-{{ checksum "package.json" }}
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}-{{ checksum "package.json" }}-break-cache
       - run:
           name: Node install
           command: |
