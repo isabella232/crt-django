@@ -17,8 +17,6 @@ jobs:
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: circle_test
-    environment:
-        CIRCLE: True
     steps:
       - checkout
       - restore_cache:
@@ -42,6 +40,8 @@ jobs:
             - "/usr/local/bin"
             - "/usr/local/lib/python3.7/site-packages"
       - run:
+          environment:
+            CIRCLE: True
           name: run server for tests
           command: |
             pipenv run crt_portal/manage.py runserver 8000
