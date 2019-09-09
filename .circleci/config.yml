@@ -42,24 +42,26 @@ jobs:
       - run:
           name: run server for tests
           command: |
+            export CIRCLECI=True
             pipenv run crt_portal/manage.py runserver 8000
           background: True
       - run:
           name: Make directory for test results
           command: |
             mkdir /tmp/test-results;
-      - run:
-          name: Run unit tests
-          command: |
-            pipenv run crt_portal/manage.py test cts_forms
-      - run:
-          name: Run bandit (Python security) tests
-          command: |
-            pipenv run bandit -r crt_portal/
-      - run:
-          name: Run flake8 test for Python code style
-          command: |
-            pipenv run flake8
+      #  these are working
+      # - run:
+      #     name: Run unit tests
+      #     command: |
+      #       pipenv run crt_portal/manage.py test cts_forms
+      # - run:
+      #     name: Run bandit (Python security) tests
+      #     command: |
+      #       pipenv run bandit -r crt_portal/
+      # - run:
+      #     name: Run flake8 test for Python code style
+      #     command: |
+      #       pipenv run flake8
       - run:
           name: Run pa11y-ci accessibility check
           command: |
