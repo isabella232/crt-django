@@ -47,7 +47,7 @@ jobs:
           name: run server for tests
           command: |
             export CIRCLECI=True
-            python run crt_portal/manage.py runserver 8000
+            python crt_portal/manage.py runserver 8000
           background: True
       - run:
           name: Make directory for test results
