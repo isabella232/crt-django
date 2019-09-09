@@ -45,7 +45,7 @@ jobs:
           name: run server for tests
           command: |
             export CIRCLECI=True
-            pipenv run crt_portal/manage.py runserver 8000
+            python run crt_portal/manage.py runserver 8000
           background: True
       - run:
           name: Make directory for test results
