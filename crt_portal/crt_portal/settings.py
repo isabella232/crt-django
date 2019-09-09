@@ -66,10 +66,9 @@ ALLOWED_HOSTS = [
     'crt-portal-django-prod.app.cloud.gov',
     'crt-portal-django-stage.app.cloud.gov',
     'crt-portal-django-dev.app.cloud.gov',
-    '127.0.0.1',
 ]
 
-if environment != 'UNDEFINED':
+if environment == 'UNDEFINED':
     ALLOWED_HOSTS = ['127.0.0.1']
     logger.warning('CIRCLE test host added')
 
