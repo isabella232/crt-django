@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Note that when using Docker, ENV is set to "LOCAL" by docker-compose.yml.
 # We are using Docker for local development only.
 # We are using the UNDEFINED setting for testing.
-# For cloud.gov ENV is set in the manifest
+# For cloud.gov ENV is set in the manifest.
 environment = os.environ.get('ENV', 'UNDEFINED')
 
 # Quick-start development settings - unsuitable for production
@@ -66,6 +66,7 @@ ALLOWED_HOSTS = [
     'crt-portal-django-prod.app.cloud.gov',
     'crt-portal-django-stage.app.cloud.gov',
     'crt-portal-django-dev.app.cloud.gov',
+    '127.0.0.1',
 ]
 
 if environment != 'UNDEFINED':
